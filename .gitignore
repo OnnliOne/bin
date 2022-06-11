@@ -37,4 +37,5 @@ tst/ConfigurationCombinationsTest.php
 .externalToolBuilders
 .c9
 /.idea/
+/.vscode/
 *.iml
