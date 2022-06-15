@@ -1,5 +1,5 @@
 {
-	"name" : "privatebin/privatebin",
+	"name" : "onnlione/bin",
 	"description" : "PrivateBin is a minimalist, open source online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted in the browser using 256 bit AES in Galois Counter mode (GCM).",
 	"type" : "project",
 	"keywords" : [
@@ -15,7 +15,7 @@
 		"encrypted",
 		"AES"
 	],
-	"homepage" : "https://privatebin.info/",
+	"homepage" : "https://bin.onn.li/",
 	"license" : "zlib-acknowledgement",
 	"support" : {
 		"issues" : "https://github.com/PrivateBin/PrivateBin/issues",
@@ -24,7 +24,7 @@
 		"docs" : "https://privatebin.info/codedoc/"
 	},
 	"require" : {
-		"php" : "^5.6.0 || ^7.0 || ^8.0",
+		"php" : "^7.0 || ^8.0",
 		"paragonie/random_compat" : "2.0.21",
 		"yzalis/identicon" : "2.0.0",
 		"mlocati/ip-lib" : "1.18.0"

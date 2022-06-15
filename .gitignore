@@ -19,6 +19,7 @@ vendor/*/*/*.*
 vendor/*/*/*/*.*
 vendor/*/*/*/*/*.*
 vendor/*/*/*/*/*/*.*
+vendor/*/*/*/*/*/*/*.*
 vendor/**/LICENSE
 vendor/**/test
 vendor/**/tst

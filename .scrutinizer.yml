@@ -3,9 +3,9 @@ checks:
     javascript: true
 filter:
     paths:
-        - "css/privatebin.css"
-        - "css/bootstrap/privatebin.css"
-        - "js/privatebin.js"
+        - "css/main.css"
+        - "css/bootstrap/main.css"
+        - "js/main.js"
         - "lib/*.php"
         - "index.php"
 coding_style:

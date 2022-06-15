@@ -2,7 +2,7 @@
 
 CURRENT_VERSION = 1.4.0
 VERSION ?= 1.4.1
-VERSION_FILES = index.php cfg/ *.md css/ i18n/ img/ js/package.json js/privatebin.js lib/ Makefile tpl/ tst/
+VERSION_FILES = index.php cfg/ *.md css/ i18n/ img/ js/package.json js/main.js lib/ Makefile tpl/ tst/
 REGEX_CURRENT_VERSION := $(shell echo $(CURRENT_VERSION) | sed "s/\./\\\./g")
 REGEX_VERSION := $(shell echo $(VERSION) | sed "s/\./\\\./g")
 
@@ -23,7 +23,7 @@ coverage-php: ## Run PHP unit tests and generate code coverage reports.
 doc: doc-js doc-php ## Generate all code documentation.
 
 doc-js: ## Generate JS code documentation.
-	jsdoc -p -d doc/jsdoc js/privatebin.js js/legacy.js
+	jsdoc -p -d doc/jsdoc js/main.js js/legacy.js
 
 doc-php: ## Generate JS code documentation.
 	phpdoc --visibility public,protected,private -t doc/phpdoc -d lib/

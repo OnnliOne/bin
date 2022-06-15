@@ -5,7 +5,7 @@
 
 [main]
 ; (optional) set a project name to be displayed on the website
-; name = "PrivateBin"
+; name = "Onn.li Bin"
 
 ; The full URL, with the domain name and directories that point to the PrivateBin files
 ; This URL is essential to allow Opengraph images to be displayed on social networks
@@ -37,7 +37,7 @@ defaultformatter = "plaintext"
 sizelimit = 10485760
 
 ; template to include, default is "bootstrap" (tpl/bootstrap.php)
-template = "bootstrap"
+template = "bootstrapfive"
 
 ; (optional) info text to display
 ; use single, instead of double quotes for HTML attributes
@@ -173,16 +173,16 @@ dir = PATH "data"
 ; example of a Google Cloud Storage configuration
 ;class = GoogleCloudStorage
 ;[model_options]
-;bucket = "my-private-bin"
+;bucket = "my-bin"
 ;prefix = "pastes"
 
 ;[model]
 ; example of DB configuration for MySQL
 ;class = Database
 ;[model_options]
-;dsn = "mysql:host=localhost;dbname=privatebin;charset=UTF8"
-;tbl = "privatebin_"	; table prefix
-;usr = "privatebin"
+;dsn = "mysql:host=localhost;dbname=bin;charset=UTF8"
+;tbl = "bin_"	; table prefix
+;usr = "bin"
 ;pwd = "Z3r0P4ss"
 ;opt[12] = true	  ; PDO::ATTR_PERSISTENT
 
@@ -199,8 +199,8 @@ dir = PATH "data"
 ; example of DB configuration for PostgreSQL
 ;class = Database
 ;[model_options]
-;dsn = "pgsql:host=localhost;dbname=privatebin"
-;tbl = "privatebin_"     ; table prefix
-;usr = "privatebin"
+;dsn = "pgsql:host=localhost;dbname=bin"
+;tbl = "bin_"     ; table prefix
+;usr = "bin"
 ;pwd = "Z3r0P4ss"
 ;opt[12] = true    ; PDO::ATTR_PERSISTENT

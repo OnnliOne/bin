@@ -123,7 +123,7 @@ class ViewTest extends PHPUnit_Framework_TestCase
             );
             // testing version number in JS address, since other instances may not be present in different templates
             $this->assertRegExp(
-                '#<script[^>]+src="js/privatebin.js\\?' . rawurlencode(self::$version) . '"[^>]*>#',
+                '#<script[^>]+src="js/main.js\\?' . rawurlencode(self::$version) . '"[^>]*>#',
                 $content,
                 $template . ': outputs version correctly'
             );

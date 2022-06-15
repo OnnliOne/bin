@@ -1,15 +1,4 @@
 <?php
-/**
- * PrivateBin
- *
- * a zero-knowledge paste bin
- *
- * @link      https://github.com/PrivateBin/PrivateBin
- * @copyright 2012 Sébastien SAUVAGE (sebsauvage.net)
- * @license   https://www.opensource.org/licenses/zlib-license.php The zlib/libpng License
- * @version   1.4.0
- */
-
 namespace PrivateBin;
 
 use Exception;

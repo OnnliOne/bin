@@ -1,16 +1,3 @@
-/**
- * PrivateBin
- *
- * a zero-knowledge paste bin
- *
- * @see       {@link https://github.com/PrivateBin/PrivateBin}
- * @copyright 2012 Sébastien SAUVAGE ({@link http://sebsauvage.net})
- * @license   {@link https://www.opensource.org/licenses/zlib-license.php The zlib/libpng License}
- * @version   1.4.0
- * @name      PrivateBin
- * @namespace
- */
-
 // global Base64, DOMPurify, FileReader, RawDeflate, history, navigator, prettyPrint, prettyPrintOne, showdown, kjua
 
 jQuery.fn.draghover = function() {

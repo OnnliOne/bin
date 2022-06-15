@@ -1,8 +1,5 @@
 <?php
 use PrivateBin\I18n;
-$isCpct = substr($template, 9, 8) === '-compact';
-$isDark = substr($template, 9, 5) === '-dark';
-$isPage = substr($template, -5) === '-page';
 ?><!DOCTYPE html>
 <html lang="<?php echo I18n::_('en'); ?>">
 	<head>
@@ -13,21 +10,10 @@ $isPage = substr($template, -5) === '-page';
 		<meta name="robots" content="noindex" />
 		<meta name="google" content="notranslate">
 		<title><?php echo I18n::_($NAME); ?></title>
-<?php
-if (!$isDark) :
-?>
-		<link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap-3.4.1.css" />
-<?php
-endif;
-?>
-		<link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap-theme-3.4.1.css" />
-<?php
-if ($isDark) :
-?>
-		<link type="text/css" rel="stylesheet" href="css/bootstrap/darkstrap-0.9.3.css" />
-<?php
-endif;
-?>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/css/bootstrap-nightshade.min.css" integrity="sha256-o4/KvOMbqkanQIhEKRG5j11aFGYHpgfB8Zy8mInEzSU=" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 		<link type="text/css" rel="stylesheet" href="css/bootstrap/main.css?<?php echo rawurlencode($VERSION); ?>" />
 <?php
 if ($SYNTAXHIGHLIGHTING) :
@@ -98,86 +84,80 @@ endif;
 	</head>
 	<body role="document" data-compression="<?php echo rawurlencode($COMPRESSION); ?>"<?php
 $class = array();
-if ($isCpct) {
-    $class[] = 'navbar-spacing';
-}
-if ($isDark) {
-    $class[] = 'dark-theme';
-}
 if (count($class)) {
     echo ' class="', implode(' ', $class), '"';
 }
 ?>>
-		<div id="passwordmodal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-body">
-						<form id="passwordform" role="form">
-							<div class="form-group">
-								<label for="passworddecrypt"><span class="glyphicon glyphicon-eye-open"></span> <?php echo I18n::_('Please enter the password for this paste:') ?></label>
-								<input id="passworddecrypt" type="password" class="form-control" placeholder="<?php echo I18n::_('Enter password') ?>" required="required">
-							</div>
-							<button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> <?php echo I18n::_('Decrypt') ?></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+<div id="passwordmodal" tabindex="-1" class="modal fade" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id="passwordform" role="form">
+                    <div class="form-group">
+                        <label for="passworddecrypt"><span class="glyphicon glyphicon-eye-open"></span> 
+                            <?php echo I18n::_(
+                            'Please enter the password for this paste:') ?>
+                        </label>
+                        <input id="passworddecrypt" type="password" class="form-control" placeholder="&lt;?php echo I18n::_(&apos;Enter password&apos;) ?&gt;"
+                        required="required">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> 
+                        <?php echo I18n::_(
+                        'Decrypt') ?>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 if ($QRCODE) :
 ?>
-		<div id="qrcodemodal" tabindex="-1" class="modal fade" aria-labelledby="qrcodemodalTitle" role="dialog" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-body">
-						<div class="mx-auto" id="qrcode-display"></div>
-					</div>
-					<div class="row">
-						<div class="btn-group col-xs-12">
-							<span class="col-xs-12">
-								<button type="button" class="btn btn-primary btn-block" data-dismiss="modal"><?php echo I18n::_('Close') ?></button>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<div id="qrcodemodal" tabindex="-1" class="modal fade" aria-labelledby="qrcodemodalTitle" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="mx-auto" id="qrcode-display"></div>
+            </div>
+            <div class="row">
+                <div class="btn-group col-12">
+					<span class="col-12">
+						<button type="button" class="btn btn-primary btn-block" data-dismiss="modal"><?php echo I18n::_('Close') ?></button>
+					</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 endif;
 ?>
-		<div id="emailconfirmmodal" tabindex="-1" class="modal fade" aria-labelledby="emailconfirmmodalTitle" role="dialog" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-body">
-						<div id="emailconfirm-display"></div>
-					</div>
-					<div class="row">
-						<div class="btn-group col-xs-12" data-toggle="buttons">
-							<span class="col-xs-12 col-md-4">
-								<button id="emailconfirm-timezone-current" type="button" class="btn btn-danger btn-block" data-dismiss="modal"><?php echo I18n::_('Use Current Timezone') ?></button>
-							</span>
-							<span class="col-xs-12 col-md-4">
-								<button id="emailconfirm-timezone-utc" type="button" class="btn btn-default btn-block" data-dismiss="modal"><?php echo I18n::_('Convert To UTC') ?></button>
-							</span>
-							<span class="col-xs-12 col-md-4">
-								<button type="button" class="btn btn-primary btn-block" data-dismiss="modal"><?php echo I18n::_('Close') ?></button>
-							</span>
-						</div>
-					</div>
+<div id="emailconfirmmodal" tabindex="-1" class="modal fade" aria-labelledby="emailconfirmmodalTitle" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div id="emailconfirm-display"></div>
+			</div>
+			<div class="row">
+				<div class="btn-group col-12" data-toggle="buttons">
+					<span class="col-12 col-xl-4">
+						<button id="emailconfirm-timezone-current" type="button" class="btn btn-danger btn-block" data-dismiss="modal"><?php echo I18n::_('Use Current Timezone') ?></button>
+					</span>
+					<span class="col-12 col-xl-4">
+						<button id="emailconfirm-timezone-utc" type="button" class="btn btn-secondary btn-block" data-dismiss="modal"><?php echo I18n::_('Convert To UTC') ?></button>
+					</span>
+					<span class="col-12 col-xl-4">
+						<button type="button" class="btn btn-primary btn-block" data-dismiss="modal"><?php echo I18n::_('Close') ?></button>
+					</span>
 				</div>
 			</div>
 		</div>
-		<nav class="navbar navbar-<?php echo $isDark ? 'inverse' : 'default'; ?> navbar-<?php echo $isCpct ? 'fixed' : 'static'; ?>-top"><?php
-if ($isCpct) :
-?><div class="container"><?php
-endif;
-?>
+	</div>
+</div>
+		<nav class="navbar navbar-light bg-light navbar-static-top navbar-expand-md">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only"><?php echo I18n::_('Toggle navigation'); ?></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
 				</button>
 				<a class="reloadlink navbar-brand" href="">
 					<img alt="<?php echo I18n::_($NAME); ?>" src="img/icon.svg" width="38" />
@@ -185,16 +165,16 @@ endif;
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li id="loadingindicator" class="navbar-text hidden">
+					<li id="loadingindicator" class="nav-item navbar-text hidden">
 						<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-						<?php echo I18n::_('Loading…'), PHP_EOL; ?>
+						<?php echo I18n::_('Loading&#x2026;'), PHP_EOL; ?>
 					</li>
-					<li>
+					<li class="nav-item">
 						<button id="retrybutton" type="button" class="reloadlink hidden btn btn-<?php echo $isDark ? 'warning' : 'primary'; ?> navbar-btn">
 							<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> <?php echo I18n::_('Retry'), PHP_EOL; ?>
 						</button>
 					</li>
-					<li>
+					<li class="nav-item">
 <?php
 if ($isPage) :
 ?>
@@ -229,7 +209,7 @@ if ($QRCODE) :
 endif;
 ?>
 					</li>
-					<li class="dropdown">
+					<li class="nav-item dropdown">
 						<select id="pasteExpiration" name="pasteExpiration" class="hidden">
 <?php
 foreach ($EXPIRE as $key => $value) :
@@ -455,8 +435,7 @@ endif;
 <?php
 if (strlen($NOTICE)) :
 ?>
-				<div role="alert" class="alert alert-info">
-					<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+				<div role="alert" class="alert alert-info">	<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 					<?php echo I18n::encode($NOTICE), PHP_EOL; ?>
 				</div>
 <?php
@@ -555,13 +534,17 @@ endif;
 			</section>
 			<section class="container">
 				<article class="row">
-					<div id="placeholder" class="col-md-12 hidden"><?php echo I18n::_('+++ no paste text +++'); ?></div>
-					<div id="attachmentPreview" class="col-md-12 text-center hidden"></div>
-					<div id="prettymessage" class="col-md-12 hidden">
-						<pre id="prettyprint" class="col-md-12 prettyprint linenums:1"></pre>
+					<div id="placeholder" class="col-lg-12 hidden">
+						<?php echo I18n::_( '+++ no paste text +++'); ?>
 					</div>
-					<div id="plaintext" class="col-md-12 hidden"></div>
-					<p class="col-md-12"><textarea id="message" name="message" cols="80" rows="25" class="form-control hidden"></textarea></p>
+					<div id="attachmentPreview" class="col-lg-12 text-center hidden"></div>
+					<div id="prettymessage" class="col-lg-12 hidden">
+						<pre id="prettyprint" class="col-lg-12 prettyprint linenums:1"></pre>
+					</div>
+					<div id="plaintext" class="col-lg-12 hidden"></div>
+					<p class="col-lg-12">
+						<textarea id="message" name="message" cols="80" rows="25" class="form-control hidden"></textarea>
+					</p>
 				</article>
 			</section>
 			<section class="container">
@@ -571,24 +554,23 @@ endif;
 				</div>
 			</section>
 			<section class="container">
-				<div id="noscript" role="alert" class="alert alert-info noscript-hide">
-					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-					<?php echo I18n::_('Loading…'); ?><br />
-					<span class="small"><?php echo I18n::_('In case this message never disappears please have a look at <a href="%s">this FAQ for information to troubleshoot</a>.', 'https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-the-loading-message-not-go-away'); ?></span>
+				<div id="noscript" role="alert" class="alert alert-info noscript-hide">	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<?php
+						echo I18n::_( 'Loading…'); ?>
+					<br>
+					<span class="small"><?php echo I18n::_('In case this message never disappears please have a look at <a href="%s">this FAQ for information to troubleshoot.&apos;, &apos;https://github.com/PrivateBin/PrivateBin/wiki/FAQ#why-does-the-loading-message-not-go-away&apos;'); ?></span>
 				</div>
 			</section>
 			<footer class="container">
 				<div class="row">
-					<h4 class="col-md-5 col-xs-8"><?php echo I18n::_($NAME); ?> <small>- <?php echo I18n::_('Because ignorance is bliss'); ?></small></h4>
-					<p class="col-md-1 col-xs-4 text-center"><?php echo $VERSION; ?></p>
-					<p id="aboutbox" class="col-md-6 col-xs-12">
-						<?php echo sprintf(
-                            I18n::_('%s is a minimalist, open source online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted %sin the browser%s using 256 bits AES.',
-                                I18n::_($NAME),
-                                '%s', '%s'
-                            ),
-                            '<i>', '</i>'), ' ', $INFO, PHP_EOL;
-                        ?>
+					<h4 class="col-lg-5 col-8"><?php echo I18n::_($NAME); ?> <small>- <?php echo I18n::_('Because ignorance is bliss'); ?></small></h4>
+					<p class="col-lg-1 col-4 text-center">
+						<?php echo $VERSION; ?>
+					</p>
+					<p id="aboutbox" class="col-lg-6 col-12">
+						<?php echo sprintf( I18n::_(
+						'%s is a minimalist, open source online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted %sin the browser%s using 256 bits AES.', I18n::_($NAME), '%s', '%s' ), '<i>&apos;, &apos;&apos;), &apos; &apos;, $INFO, PHP_EOL;'
+						);?>
 					</p>
 				</div>
 			</footer>
@@ -613,5 +595,8 @@ if ($FILEUPLOAD) :
 <?php
 endif;
 ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-dark-5@1.1.3/dist/js/darkmode.min.js" integrity="sha256-TJFCDUJIlHldAZoOahUGxmotcxJRiV2ZwL2ztw/0sZY=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	</body>
 </html>
